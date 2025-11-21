@@ -1,4 +1,4 @@
-name: Java CI
+name: Java CI with Maven
 
 on:
   push:
@@ -10,14 +10,21 @@ jobs:
   build:
     runs-on: ubuntu-latest
     
+    # هنا نقولو لـ GitHub: اشتغل في مجلد demoTest
+    defaults:
+      run:
+        working-directory: demoTest
+    
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
     
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
         java-version: '17'
         distribution: 'temurin'
+        cache: maven
     
     - name: Build with Maven
       run: mvn clean package -DskipTests
