@@ -10,7 +10,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
+@SpringBootTest(classes = DemoApplication.class) 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class ControllerTest {
     
